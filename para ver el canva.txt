@@ -1,0 +1,2 @@
+/** @type {CanvasRenderingContext2D} */
+/** @type { HTMLCanvasElement} */
