@@ -27,7 +27,7 @@ let imageData = ctx.createImageData(canvasWidth,canvasHeight);
 //     }
 //     gr -= aum;
 // }
-//ctx.putImageData(imageData, 0, 0);
+// ctx.putImageData(imageData, 0, 0);
 
 
 
@@ -57,7 +57,7 @@ let imageData = ctx.createImageData(canvasWidth,canvasHeight);
         
 //     gr -= aum;
 // }
-//     ctx.putImageData(imageData, 0, 0);
+    ctx.putImageData(imageData, 0, 0);
 
 let img = new Image();
 
