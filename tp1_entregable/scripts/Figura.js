@@ -1,22 +1,28 @@
+export {Figura};
+
 class Figura{
 
-    constructor(posX,posY,contexto,ancho,alto,relleno,resaltada){
+    constructor(posX,posY,contexto,relleno){
         this.posX = posX;
         this.posY = posY;
-        this.ancho = ancho;
-        this.alto = alto;
+        this.contexto = contexto;
         this.relleno = relleno;
-        this.resaltada = resaltada;
+        
     }
 
     dibujar(){
-        //manera de dibujar cada figura
+        
     }
 
     moverFigura(posX,posY){
         this.posX = posX;
         this.posY = posY;
     }
+
+    setSeleccionada(seleccionada){
+        this.resaltada = seleccionada;
+    }
+    
 
     estaElPunto(){
         //codigo para saber si se clickeo dentro de la figura

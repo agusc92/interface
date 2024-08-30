@@ -12,22 +12,22 @@ let imageData = ctx.createImageData(canvasWidth,canvasHeight);
 
 //negro con gradiente
 
-// function setPixel(imgData,x,y,r,g,b,a){
-//     let index = (x + y * imgData.width) *4;
-//     imgData.data[index + 0] = r;
-//     imgData.data[index + 1] = g;
-//     imgData.data[index + 2] = b;
-//     imgData.data[index + 3] = a;
-// }
-// for(let y = 0 ;y < canvasHeight;y++){
+function setPixel(imgData,x,y,r,g,b,a){
+    let index = (x + y * imgData.width) *4;
+    imgData.data[index + 0] = r;
+    imgData.data[index + 1] = g;
+    imgData.data[index + 2] = b;
+    imgData.data[index + 3] = a;
+}
+for(let y = 0 ;y < canvasHeight;y++){
     
-//     for(let x =0 ; x< canvasWidth;x++){
+    for(let x =0 ; x< canvasWidth;x++){
         
-//         setPixel(imageData,x,y,0,0,0,gr);
-//     }
-//     gr -= aum;
-// }
-// ctx.putImageData(imageData, 0, 0);
+        setPixel(imageData,x,y,0,0,0,gr);
+    }
+    gr -= aum;
+}
+ctx.putImageData(imageData, 0, 0);
 
 
 
