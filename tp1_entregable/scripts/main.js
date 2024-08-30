@@ -103,7 +103,7 @@ function generarColorAleatoreo(max,min){
 
 
 function pintarCanvas() { 
-    let color = 'rgba(230,245,235,255)';
+    let color = 'rgba(240,245,235,255)';
     let rect = new Rectangulo(0, 0, contexto,altoCanvas-1,anchoCanvas-1,  color);
     rect.dibujar();
 }

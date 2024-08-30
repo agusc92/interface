@@ -15,7 +15,6 @@ class Cuadrado extends Figura{
         
     }
     estaElPunto(x,y){
-        console.log('estaelpunto')
         return ((x > this.posX  && x < this.posX + this.lado  && y > this.posY && y < this.posY + this.lado )); 
     }
     moverFigura(posX,posY){

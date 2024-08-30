@@ -17,7 +17,6 @@ class Rectangulo extends Figura{
     }
 
     estaElPunto(x,y){
-        console.log('estaelpunto')
         return ((x > this.posX  && x < this.posX + this.ancho  && y > this.posY && y < this.posY + this.alto ));
        
     }
