@@ -1,0 +1,36 @@
+ul{
+    list-style: none;
+    padding: 5px;
+    margin: 0;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    border: 1px dashed black;
+    div{
+        display: flex;
+        height:800px;
+
+        ul{
+            border: 1px dashed rgb(240, 55, 163);
+        }
+        li{
+            border: 1px dashed rgb(31, 45, 233);
+            margin-top: 3px;
+        }
+    }
+}
+.menu{
+    list-style: none;
+    padding: 5px;
+    margin: 0;
+    display: flex;
+    border: 1px dashed rgb(173, 92, 92);
+    height: fit-content;
+    width:auto;
+    li{
+        border: 1px dashed rgb(120, 194, 97);
+        height: fit-content;
+        padding: 5px;
+    }
+}

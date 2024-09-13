@@ -1,0 +1,39 @@
+ul {
+  list-style: none;
+  padding: 5px;
+  margin: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  border: 1px dashed black;
+}
+main div {
+  display: flex;
+  height: 800px;
+}
+main div ul {
+  border: 1px dashed rgb(240, 55, 163);
+}
+main div li {
+  border: 1px dashed rgb(31, 45, 233);
+  margin-top: 3px;
+}
+
+.menu {
+  list-style: none;
+  padding: 5px;
+  margin: 0;
+  display: flex;
+  border: 1px dashed rgb(173, 92, 92);
+  height: -moz-fit-content;
+  height: fit-content;
+  width: auto;
+}
+.menu li {
+  border: 1px dashed rgb(120, 194, 97);
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 5px;
+}/*# sourceMappingURL=estilos.css.map */
