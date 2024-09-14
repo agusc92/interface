@@ -4,6 +4,11 @@ ul {
   margin: 0;
 }
 
+canvas {
+  width: 90%;
+  height: 90%;
+}
+
 main {
   display: flex;
   flex-direction: column;
@@ -15,10 +20,19 @@ main div {
 }
 main div ul {
   border: 1px dashed rgb(240, 55, 163);
+  width: 50px;
 }
 main div li {
   border: 1px dashed rgb(31, 45, 233);
   margin-top: 3px;
+}
+main div li img {
+  width: 25px;
+}
+main div .contnedorCanva {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .menu {
