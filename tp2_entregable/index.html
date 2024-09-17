@@ -12,24 +12,27 @@
         <ul class="menu">
             <li><button>hoja en blanco</button></li>
             <li><button>cargar imagen</button></li>
+            <li><a href="" id="guardarImagen" download="mi_imagen.png">guardar imagen</a></li>
         </ul>
         <div class="aplicacion" id="aplicacion">
             <div class="herramientas" id="herramientas">
                 <ul>
-                    <li><button><img src="assets/lapiz.png" alt=""></button></li>
-                    <li><button><img src="assets/goma.png" alt=""></button></li>
+                    <li><button alt="lapiz" id="lapiz"><img src="assets/lapiz.png" ></button></li>
+                    <li><button><img src="assets/goma.png" alt="goma" id="btnGoma"></button></li>
                     <li><button><img src="assets/filtro.png" alt=""></button></li>
                     
                 </ul>
-                <ul>
+                <ul id="barraAux">
 
                 </ul>
             </div>
-            <div class="contnedorCanva" id="contenedorDeCanva">
-                <canvas></canvas>
+            <div class="contnedorCanva" id="contenedorDeCanva" class="contenedorCanvas">
+                <canvas width="845" height=" 720"></canvas>
             </div>
         </div>
         
     </main>
+    <script src="scripts/Lapiz.js"></script>
+    <script src="scripts/main.js"></script>
 </body>
 </html>
