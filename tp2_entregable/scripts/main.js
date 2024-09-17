@@ -5,10 +5,11 @@ let canvas = document.querySelector('canvas');
 let ctx = canvas.getContext('2d');
 let btnLapiz = document.querySelector('#lapiz')
 let btnGoma = document.querySelector('#btnGoma');
-let btnGuardar = document.querySelector('#guardarImagen');
+let btnGuardar = document.querySelector('#btnGuardar');
+let btnCargar = document.querySelector('#btnCargar');
 const anchoCanvas = canvas.width;
 const altoCanvas = canvas.height;
-const barraAux = document.querySelector('#barraAux')
+const barraAux = document.querySelector('#barraAux');
 let mouseAbajo = false;
 let lapiz;
 let btnColor;
@@ -17,6 +18,10 @@ btnGuardar.addEventListener('click',()=>{
     const dataURL = canvas.toDataURL('image/png'); // Puedes cambiar 'image/png' a 'image/jpeg'
     btnGuardar.href = dataURL;
     
+})
+btnCargar.addEventListener('click',()=>{
+    let imagen = new Imagen('./assets/one-piece.jpg',ctx,anchoCanvas,altoCanvas)
+    imagen.dibujar();
 })
 btnLapiz.addEventListener('click',()=>{
     lapiz = new Lapiz(ctx, null, null, 'black', 5)

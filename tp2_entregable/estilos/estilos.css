@@ -55,4 +55,16 @@ main div .contnedorCanva {
   height: -moz-fit-content;
   height: fit-content;
   padding: 5px;
+}
+.menu li div {
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: rgb(239, 239, 239);
+  border: 1px solid rgb(129, 129, 129);
+  border-radius: 3px;
+  padding: 1px;
+}
+.menu li a {
+  color: black;
+  text-decoration: none;
 }/*# sourceMappingURL=estilos.css.map */
