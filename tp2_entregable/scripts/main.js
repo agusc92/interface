@@ -2,6 +2,7 @@
 /** @type { HTMLCanvasElement} */
 
 let lapiz;
+let lapizAnterior;
 let goma;
 let btnColor;
 let btnFuente;
@@ -10,7 +11,7 @@ let filtro;
 let canvas = document.querySelector('canvas');
 const anchoCanvas = canvas.width;
 const altoCanvas = canvas.height;
-
+const escritor = new EscritorHtml();
 let ctx = canvas.getContext('2d');
 
 let btnHojaBlanca = document.querySelector('#hojaBlanca');
@@ -31,45 +32,57 @@ let filtros={
     detectBordes : aplicarDetecBordes,
 }
 
+//evento para cortar el trazo cuando el lapiz sale del canvas
 canvas.addEventListener('mouseleave',()=>{
-    //deja de dibujar cuando el lapiz sale del canvas
     mouseAbajo=false;
 })
+//evento para borra todo el contenido del canvas
 btnHojaBlanca.addEventListener('click',()=>{
-    //borra todo el contenido del canvas
     dibujarCanvas();
 })
+//evento para guarda el contenido del canvas
 btnGuardar.addEventListener('click',()=>{
-    //guarda el contenido del canvas
     const dataURL = canvas.toDataURL('image/png'); 
     btnGuardar.href = dataURL;
     
 })
-btnCargar.addEventListener('click',()=>{
-    //evento para cargar una
-    let imagen = new Imagen(ctx,anchoCanvas,altoCanvas)
-    imagen.cargarImagen('./assets/ace.jpg')
-    imagen.dibujar();
+//evento para cargar una imagen desde la computadora
+btnCargar.addEventListener('change',(e)=>{
+    let archivo = e.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(archivo);
+    reader.onload=(e)=>{
+        dibujarCanvas()
+        let imagen = new Imagen(ctx,anchoCanvas,altoCanvas);
+        imagen.cargarImagen(e.target.result);
+    }
+        
+        
 })
+// evento para mostrar opciones de lapiz y crearlo
 btnLapiz.addEventListener('click',()=>{
     
-        lapiz = new Lapiz(ctx, null, null, 'black', 5)
+    lapiz = new Lapiz(ctx, null, null, 'black', 5);
     
-    
-    barraAux.innerHTML = '<li><input type="color" id="btnColor"></li> <li><input type="number" id="btnFuente" value="5"></li>';
+    // funcion para escribir el menu del lapiz
+    escritor.menuDeLapiz(barraAux);
+
     btnColor = document.querySelector('#btnColor');
     btnFuente = document.querySelector('#btnFuente');
+    //evento para cambiar el color del lapiz
     btnColor.addEventListener('input',(e)=>{
         lapiz.cambiarColor(e.target.value);
     })
+    //evento para cambiar grosor del lapiz
     btnFuente.addEventListener('input',(e)=>{
-        console.log(e.target.value);
         lapiz.cambiarGrosor(e.target.value);
     })
 })
+// evento para mostrar opciones de la goma y crearla
 btnGoma.addEventListener('click',()=>{
     lapiz= new Lapiz(ctx, null, null, 'white', 5);
-    barraAux.innerHTML = '<li><input type="number" id="btnFuente" value="5"></li>';
+    // funcion para escribir el menu de la goma
+    escritor.menuDeGoma(barraAux);
     btnFuente = document.querySelector('#btnFuente');
     btnFuente.addEventListener('input',(e)=>{
         
@@ -77,14 +90,10 @@ btnGoma.addEventListener('click',()=>{
     })
 })
 btnFiltros.addEventListener('click',()=>{
-    barraAux.innerHTML = '<li><button value="monoCromo"><img src="./assets/mono-cromo.png"></button></li>';
-    barraAux.innerHTML += '<li><button value="negativo"><img src="./assets/negativo.png"></button></li>';
-    barraAux.innerHTML += '<li><button value="sepia"><img src="./assets/sepia.png"></button></li>';
-    barraAux.innerHTML += '<li><button value="brillo"><img src="./assets/brillo.png"></button><input type="number" value=100 id="brillo"></li>';
-    barraAux.innerHTML += '<li><button value="blur"><img src="./assets/blur.png"></button></li>';
-    barraAux.innerHTML += '<li><button value="saturacion"><img src="./assets/saturacion.png"></button></li>';
-    barraAux.innerHTML += '<li><button value="detectBordes"><img src="./assets/saturacion.png"></button></li>';
-
+    //funcion para escribir el menu de os filtros.
+    escritor.menuDeFiltros(barraAux);
+    
+    //captura todos los elementos y le asigna eventos.
     let botones = [...barraAux.querySelectorAll('button')];
     botones.forEach(boton=>{
         boton.addEventListener('click',()=>{
