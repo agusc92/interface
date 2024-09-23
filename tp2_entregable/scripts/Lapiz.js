@@ -1,9 +1,9 @@
 class Lapiz {
 
-    constructor(ctx, x, y, color, width) {
+    constructor(ctx, color, width) {
         this.ctx = ctx;
-        this.x = x;
-        this.y = y;
+        this.x = 0;
+        this.y = 0;
         this.ctx.strokeStyle = color;
         this.ctx.lineWidth = width;
         this.ctx.lineCap = 'round';

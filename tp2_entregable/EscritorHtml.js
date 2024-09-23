@@ -4,8 +4,8 @@ class EscritorHtml{
 
     }
 
-    menuDeLapiz(elemento){
-        elemento.innerHTML = '<li><input type="color" id="btnColor"></li> <li><input type="number" id="btnFuente" value="5"></li>';
+    menuDeLapiz(elemento,color,fuente){
+        elemento.innerHTML = `<li><input type="color" id="btnColor" value="${color}"></li> <li><input type="range" id="btnFuente" value="${fuente}"></li>`;
     }
     menuDeGoma(elemento){
         elemento.innerHTML = '<li><input type="number" id="btnFuente" value="5"></li>'
@@ -17,6 +17,7 @@ class EscritorHtml{
     elemento.innerHTML += '<li><button value="brillo"><img src="./assets/brillo.png"></button><input type="number" value=100 id="brillo"></li>';
     elemento.innerHTML += '<li><button value="blur"><img src="./assets/blur.png"></button></li>';
     elemento.innerHTML += '<li><button value="saturacion"><img src="./assets/saturacion.png"></button></li>';
-    elemento.innerHTML += '<li><button value="detectBordes"><img src="./assets/saturacion.png"></button></li>';
+    elemento.innerHTML += '<li><button value="detectBordes"><img src="./assets/borde.png"></button></li>';
+    elemento.innerHTML += '<li><button value="sharp"><img src="./assets/sharp.png"></button></li>';
     }
 }

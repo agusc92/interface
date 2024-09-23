@@ -1,11 +1,15 @@
+// document.addEventListener('DOMContentLoaded',main)
+// function main(){
 /** @type {CanvasRenderingContext2D} */
 /** @type { HTMLCanvasElement} */
 
 let lapiz;
-let lapizAnterior;
-let goma;
+let color = '#000000';
+let fuente = 5;
+
 let btnColor;
-let btnFuente;
+let btnFuenteLapiz;
+let btnFuenteGoma;
 let mouseAbajo = false;
 let filtro;
 let canvas = document.querySelector('canvas');
@@ -30,6 +34,7 @@ let filtros={
     blur : aplicarBlur,
     saturacion : aplicarSaturacion,
     detectBordes : aplicarDetecBordes,
+    sharp : aplicarSharp,
 }
 
 //evento para cortar el trazo cuando el lapiz sale del canvas
@@ -62,29 +67,37 @@ btnCargar.addEventListener('change',(e)=>{
 // evento para mostrar opciones de lapiz y crearlo
 btnLapiz.addEventListener('click',()=>{
     
-    lapiz = new Lapiz(ctx, null, null, 'black', 5);
+    
+    lapiz = new Lapiz(ctx, color, fuente);
     
     // funcion para escribir el menu del lapiz
-    escritor.menuDeLapiz(barraAux);
+    escritor.menuDeLapiz(barraAux,color,fuente);
 
     btnColor = document.querySelector('#btnColor');
-    btnFuente = document.querySelector('#btnFuente');
-    //evento para cambiar el color del lapiz
+    btnFuenteLapiz = document.querySelector('#btnFuente');
+    //eventos para cambiar las propiedades del lapiz y actualizar variables auxiliares de memoria
+        //cambiar color
     btnColor.addEventListener('input',(e)=>{
-        lapiz.cambiarColor(e.target.value);
+        color = e.target.value;
+        lapiz.cambiarColor(color);
+            
     })
-    //evento para cambiar grosor del lapiz
-    btnFuente.addEventListener('input',(e)=>{
-        lapiz.cambiarGrosor(e.target.value);
+    //cambiar grosor
+    btnFuenteLapiz.addEventListener('input',(e)=>{
+        fuente = e.target.value;
+        lapiz.cambiarGrosor(fuente);
+        
     })
+    
 })
 // evento para mostrar opciones de la goma y crearla
 btnGoma.addEventListener('click',()=>{
-    lapiz= new Lapiz(ctx, null, null, 'white', 5);
+    lapiz = new Lapiz(ctx,'white',5)
+    
     // funcion para escribir el menu de la goma
     escritor.menuDeGoma(barraAux);
-    btnFuente = document.querySelector('#btnFuente');
-    btnFuente.addEventListener('input',(e)=>{
+    btnFuenteGoma = document.querySelector('#btnFuente');
+    btnFuenteGoma.addEventListener('input',(e)=>{
         
         lapiz.cambiarGrosor(e.target.value);
     })
@@ -92,7 +105,7 @@ btnGoma.addEventListener('click',()=>{
 btnFiltros.addEventListener('click',()=>{
     //funcion para escribir el menu de os filtros.
     escritor.menuDeFiltros(barraAux);
-    
+    lapiz=null;
     //captura todos los elementos y le asigna eventos.
     let botones = [...barraAux.querySelectorAll('button')];
     botones.forEach(boton=>{
@@ -105,10 +118,13 @@ btnFiltros.addEventListener('click',()=>{
 canvas.addEventListener('mousedown',(e)=>{
     mouseAbajo = true;
     if(lapiz){
-    let pos = posicionMouse(e);
-    lapiz.asignarPosicion(pos.x, pos.y);
-    lapiz.dibujar(pos.x, pos.y);
-}
+        let pos = posicionMouse(e);
+    
+        lapiz.asignarPosicion(pos.x, pos.y);
+        lapiz.dibujar(pos.x, pos.y);
+    }
+    
+   
 })
 canvas.addEventListener('mouseup',()=>{
     mouseAbajo = false;
@@ -177,3 +193,10 @@ function aplicarDetecBordes(){
     let imageData = filtro.filtrar(ctx.getImageData(0, 0, canvas.width, canvas.height),anchoCanvas,altoCanvas);
     ctx.putImageData(imageData,0,0);
 }
+
+function aplicarSharp(){
+    filtro = new FiltroSharp()
+    let imageData = filtro.filtrar(ctx.getImageData(0, 0, canvas.width, canvas.height),anchoCanvas,altoCanvas);
+    ctx.putImageData(imageData,0,0);
+}
+//}

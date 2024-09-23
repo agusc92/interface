@@ -24,10 +24,11 @@ main div li {
 main div li input {
   width: 40px;
 }
-main div li input[type=number]::-webkit-inner-spin-button,
-main div li input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+main div li input[type=range] {
+  writing-mode: vertical-lr;
+  direction: rtl;
+  width: 16px;
+  vertical-align: bottom;
 }
 main div li img {
   width: 25px;

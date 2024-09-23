@@ -49,5 +49,6 @@ class FiltroBlur{
         } // doble for del canvas
 
         return imageData;
+        
     }
 }
