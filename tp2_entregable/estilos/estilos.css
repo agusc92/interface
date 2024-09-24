@@ -1,3 +1,8 @@
+button:hover, .falsoBoton:hover {
+  background-color: rgb(168, 168, 168);
+  cursor: pointer;
+}
+
 ul {
   list-style: none;
   padding: 5px;
@@ -7,26 +12,33 @@ ul {
 main {
   display: flex;
   flex-direction: column;
-  border: 1px dashed black;
+  border: 3px solid rgb(102, 102, 102);
+  max-width: 1050px;
+  background-color: rgb(195, 196, 195);
 }
 main div {
   display: flex;
-  height: 800px;
+  height: 570px;
 }
 main div ul {
-  border: 1px dashed rgb(240, 55, 163);
+  border: 2px solid rgb(107, 107, 107);
   width: 50px;
 }
 main div li {
-  border: 1px dashed rgb(31, 45, 233);
-  margin-top: 3px;
+  border-bottom: 1px dotted rgb(95, 94, 94);
+  margin: 2px 0 2px 0;
+}
+main div li button {
+  margin: 2px 0 5px 0;
 }
 main div li input {
   width: 40px;
+  margin-bottom: 5px;
 }
 main div li input[type=range] {
   writing-mode: vertical-lr;
   direction: rtl;
+  height: 65px;
   width: 16px;
   vertical-align: bottom;
 }
@@ -38,7 +50,7 @@ main div .contnedorCanva {
   justify-content: center;
   align-items: center;
   width: 950px;
-  background-color: rgb(202, 202, 202);
+  background-color: rgb(235, 233, 233);
 }
 
 .menu {
@@ -46,18 +58,17 @@ main div .contnedorCanva {
   padding: 5px;
   margin: 0;
   display: flex;
-  border: 1px dashed rgb(173, 92, 92);
+  border: 2px solid rgb(107, 107, 107);
   height: -moz-fit-content;
   height: fit-content;
   width: auto;
 }
 .menu li {
-  border: 1px dashed rgb(120, 194, 97);
   height: -moz-fit-content;
   height: fit-content;
   padding: 5px;
 }
-.menu li div {
+.menu li div, .menu li label {
   height: -moz-fit-content;
   height: fit-content;
   background-color: rgb(239, 239, 239);
@@ -65,7 +76,13 @@ main div .contnedorCanva {
   border-radius: 3px;
   padding: 1px;
 }
+.menu li label {
+  padding: 1px;
+}
 .menu li a {
   color: black;
   text-decoration: none;
+}
+.menu li input[type=file] {
+  display: none;
 }/*# sourceMappingURL=estilos.css.map */
