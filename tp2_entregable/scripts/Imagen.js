@@ -1,15 +1,15 @@
 class Imagen{
      image;
     
-    constructor(ctx,anchoCanvas,altoCanvas){
+    constructor(anchoCanvas,altoCanvas){
         
-        this.ctx = ctx;
+        
         this.image = new Image();
         this.anchoCanvas = anchoCanvas;
         this.altoCanvas = altoCanvas;
     }
 
-    cargarImagen(url){
+    cargarImagen(url,ctx){
         this.image.src = url;
         this.image.onload=()=>{
             let anchoImagen = this.image.width;
@@ -21,12 +21,12 @@ class Imagen{
             // Calcular las nuevas dimensiones de la imagen
             let nuevoAncho = anchoImagen * escala;
             let nuevoAlto = altoImagen * escala;
-            this.dibujar(nuevoAncho,nuevoAlto)
+            this.dibujar(ctx,nuevoAncho,nuevoAlto)
         }
     }
-    dibujar(nuevoAncho,nuevoAlto){
+    dibujar(ctx,nuevoAncho,nuevoAlto){
         // Dibujar la imagen en el canvas con las nuevas dimensiones
-        this.ctx.drawImage(this.image, (this.anchoCanvas - nuevoAncho) / 2, 
+        ctx.drawImage(this.image, (this.anchoCanvas - nuevoAncho) / 2, 
         (this.altoCanvas - nuevoAlto) / 2, nuevoAncho, nuevoAlto);
         };
         

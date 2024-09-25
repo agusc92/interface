@@ -21,7 +21,7 @@ class FiltroSharp{
                 let verde = 0;
                 let azul = 0;
                 let indice = 0;
-                let cont = 0;
+               
                 for (let ky = 0; ky < 3; ky++) {
                     for (let kx = 0; kx < 3; kx++) {
                         const indice= (((y + ky) * anchoCanvas) + (x + kx)) * 4;
